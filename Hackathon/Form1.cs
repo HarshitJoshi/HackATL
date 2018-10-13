@@ -14,6 +14,8 @@ namespace Hackathon
 {
     public partial class Form1 : Form
     {
+        String DBdes = "";
+        String DBtags = "";
         public Form1()
         {
             InitializeComponent();
@@ -47,8 +49,7 @@ namespace Hackathon
 
             //Task.WhenAll(t2).Wait(5000);
             Console.WriteLine("Press ENTER to exit");
-            ADatabase db = new ADatabase();
-            db.run();
+            
             //Console.ReadLine();
         }
 
@@ -76,10 +77,12 @@ namespace Hackathon
         {
             image.Load(imageUri);
             tagsTB.Clear();
+            DBdes = analysis.Description.Captions[0].Text;
             imageLabel.Text = "Description: " + analysis.Description.Captions[0].Text;
             for (int i = 0; i < analysis.Description.Tags.Count; i++)
             {
                 tagsTB.AppendText(analysis.Description.Tags[i] + "\n");
+                DBtags += DBtags;
             }
             /*+
             
@@ -91,6 +94,8 @@ namespace Hackathon
         private void Form1_Load(object sender, EventArgs e)
         {
             makingRequest();
+            ADatabase db = new ADatabase();
+            db.run(localImagePath, DBdes, DBtags);
         }
         private void nextButton_Click(object sender, EventArgs e)
         {
