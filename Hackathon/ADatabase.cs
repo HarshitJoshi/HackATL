@@ -21,10 +21,10 @@ namespace Hackathon
         private async Task GetStartedDemo(Image i)
         {
             this.client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
+            Console.WriteLine("Phassing here 5");
             await this.CreateImageDocumentIfNotExists(i);
-            //await this.CreateFamilyDocumentIfNotExists("ImageDB", "ImageCollection", andersenFamily);
-            //await this.client.CreateDatabaseIfNotExistsAsync(new Database { Id = "ImageDB" });
-            //await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("ImageDB"), new DocumentCollection { Id = "ImageCollection" });
+            Console.WriteLine("Phassing here 6");
+
         }
 
         public void run(Image i)
@@ -64,9 +64,9 @@ namespace Hackathon
         {
             try
             {
-
+                Console.WriteLine("Phassing here");
                 await this.client.ReadDocumentAsync(UriFactory.CreateDocumentUri("ImageDB", "ImageCollection", i.ImageID));
-
+                Console.WriteLine("Phassing here 1");
                 this.WriteToConsoleAndPromptToContinue("Found {0}", i.ImageID);
             }
             catch (DocumentClientException de)

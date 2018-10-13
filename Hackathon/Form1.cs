@@ -86,9 +86,11 @@ namespace Hackathon
                 tagsTB.AppendText(analysis.Description.Tags[i] + "\n");
 
             }
-            Image img = new Image(imagesArray[loadedImage], DBdes);
-            ADatabase db = new ADatabase();
-            db.run(img);
+            //TestDB d = new TestDB();
+            //d.run();
+            //Image img = new Image(imagesArray[loadedImage], DBdes);
+            //ADatabase db = new ADatabase();
+            //db.run(img);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
