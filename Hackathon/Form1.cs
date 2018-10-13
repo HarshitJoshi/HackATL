@@ -18,14 +18,11 @@ namespace Hackathon
         {
             InitializeComponent();
         }
-        // subscriptionKey = "0123456789abcdef0123456789ABCDEF"
         private const string subscriptionKey = "d188394483444e09b42d2fa3fc0b2598";
-
-        // localImagePath = @"C:\Documents\LocalImage.jpg"
         private const string localImagePath = @"C:\Users\AliNa\Desktop\HackATL\Images\dog.jpeg";
 
         // Specify the features to return
-        private static readonly List<VisualFeatureTypes> features =
+        private readonly List<VisualFeatureTypes> features =
             new List<VisualFeatureTypes>()
         {
             VisualFeatureTypes.Categories, VisualFeatureTypes.Description,
@@ -49,7 +46,7 @@ namespace Hackathon
         }
 
         // Analyze a local image
-        private static async Task AnalyzeLocalAsync(
+        private async Task AnalyzeLocalAsync(
             ComputerVisionClient computerVision, string imagePath)
         {
             if (!File.Exists(imagePath))
@@ -68,10 +65,10 @@ namespace Hackathon
         }
 
         // Display the most relevant caption for the image
-        private static void DisplayResults(ImageAnalysis analysis, string imageUri)
+        private void DisplayResults(ImageAnalysis analysis, string imageUri)
         {
-            Console.WriteLine(imageUri);
-            Console.WriteLine(analysis.Description.Captions[0].Text + "\n");
+            image.Load(localImagePath);
+            imageLabel.Text = analysis.Description.Captions[0].Text + "\n";
         }
         private void Form1_Load(object sender, EventArgs e)
         {
