@@ -47,7 +47,8 @@ namespace Hackathon
 
             //Task.WhenAll(t2).Wait(5000);
             Console.WriteLine("Press ENTER to exit");
-            Database.run();
+            ADatabase db = new ADatabase();
+            db.run();
             //Console.ReadLine();
         }
 
