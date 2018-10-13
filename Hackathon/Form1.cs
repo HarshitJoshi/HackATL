@@ -16,5 +16,26 @@ namespace Hackathon
         {
             InitializeComponent();
         }
+        public const string subscriptionKey = "d61126ba7857423d95f8e6ad6e8fe743";
+        private void makePost()
+        {
+            var values = new Dictionary<string, string>
+        {
+            { "thing1", "hello" },
+                 { "thing2", "world" }
+               };
+
+            var content = new FormUrlEncodedContent(values);
+
+            var response = await client.PostAsync("http://www.example.com/recepticle.aspx", content);
+
+            var responseString = await response.Content.ReadAsStringAsync();
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+            data.AppendText("Data recieved:");
+
+        }
     }
 }
