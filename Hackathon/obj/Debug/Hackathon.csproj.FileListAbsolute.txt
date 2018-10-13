@@ -8,3 +8,10 @@ C:\Users\AliNa\Desktop\HackATL\Hackathon\obj\Debug\Hackathon.csproj.GenerateReso
 C:\Users\AliNa\Desktop\HackATL\Hackathon\obj\Debug\Hackathon.csproj.CoreCompileInputs.cache
 C:\Users\AliNa\Desktop\HackATL\Hackathon\obj\Debug\Hackathon.exe
 C:\Users\AliNa\Desktop\HackATL\Hackathon\obj\Debug\Hackathon.pdb
+C:\Users\AliNa\Desktop\HackATL\Hackathon\bin\Debug\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll
+C:\Users\AliNa\Desktop\HackATL\Hackathon\bin\Debug\Microsoft.Rest.ClientRuntime.Azure.dll
+C:\Users\AliNa\Desktop\HackATL\Hackathon\bin\Debug\Microsoft.Rest.ClientRuntime.dll
+C:\Users\AliNa\Desktop\HackATL\Hackathon\bin\Debug\Newtonsoft.Json.dll
+C:\Users\AliNa\Desktop\HackATL\Hackathon\bin\Debug\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.xml
+C:\Users\AliNa\Desktop\HackATL\Hackathon\bin\Debug\Newtonsoft.Json.xml
+C:\Users\AliNa\Desktop\HackATL\Hackathon\obj\Debug\Hackathon.csproj.CopyComplete
