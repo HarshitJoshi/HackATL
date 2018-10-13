@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,7 @@ namespace Hackathon
     public partial class Form1 : Form
     {
         String DBdes = "";
-        String DBtags = "";
+        IList<String> DBtagToArray;
         public Form1()
         {
             InitializeComponent();
@@ -79,23 +80,19 @@ namespace Hackathon
             tagsTB.Clear();
             DBdes = analysis.Description.Captions[0].Text;
             imageLabel.Text = "Description: " + analysis.Description.Captions[0].Text;
+            DBtagToArray = analysis.Description.Tags;
             for (int i = 0; i < analysis.Description.Tags.Count; i++)
             {
                 tagsTB.AppendText(analysis.Description.Tags[i] + "\n");
-                DBtags += DBtags;
+
             }
-            /*+
-            
-                "Tags :" + analysis.Tags.ToString();*/
-            //label1.Text = analysis.Tags.Count + "";
-            //Console.WriteLine("TYPE " + analysis.ImageType.ToString());
-            //label1.Text = "test";
+            Image img = new Image(imagesArray[loadedImage], DBdes);
+            ADatabase db = new ADatabase();
+            db.run(img);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            makingRequest();
-            ADatabase db = new ADatabase();
-            db.run(localImagePath, DBdes, DBtags);
+            makingRequest();     
         }
         private void nextButton_Click(object sender, EventArgs e)
         {
