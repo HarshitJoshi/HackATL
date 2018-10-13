@@ -3,7 +3,6 @@ using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO.Path.GetFileName;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -21,9 +20,9 @@ namespace Hackathon
         }
         // subscriptionKey = "0123456789abcdef0123456789ABCDEF"
         private const string subscriptionKey = "d188394483444e09b42d2fa3fc0b2598";
-        private const string[] imageLocation = Directory.GetFiles("\\Images\\");
+
         // localImagePath = @"C:\Documents\LocalImage.jpg"
-        // private const string localImagePath = @"C:\Users\AliNa\Desktop\HackATL\Images\dog.jpeg";
+        private const string localImagePath = @"C:\Users\AliNa\Desktop\HackATL\Images\dog.jpeg";
 
         // Specify the features to return
         private static readonly List<VisualFeatureTypes> features =
@@ -42,17 +41,6 @@ namespace Hackathon
             computerVision.Endpoint = "https://eastus.api.cognitive.microsoft.com/vision/v1.0/describe?maxCandidates=1";
 
             Console.WriteLine("Images being analyzed ...");
-            try {
-                Random r = new Random();
-                foreach(string image in imageLocation)
-                {
-                    localImagePath = imageLocation[Random.next(0, imageLocation.Count())];
-                }
-            } catch {
-                Console.WriteLine("error fetch the random file");
-                return;
-            }
-            
             var t2 = AnalyzeLocalAsync(computerVision, localImagePath);
 
             Task.WhenAll(t2).Wait(5000);
