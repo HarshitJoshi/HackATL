@@ -18,8 +18,12 @@ namespace Hackathon
         {
             InitializeComponent();
         }
-        private const string subscriptionKey = "d188394483444e09b42d2fa3fc0b2598";
-        private const string localImagePath = @"C:\Users\AliNa\Desktop\HackATL\Images\dog.jpeg";
+        static int loadedImage = 0;
+        private static string[] imagesArray = Directory.GetFiles("..\\..\\Images", "*.jpg")
+                                     .Select(Path.GetFileName)
+                                     .ToArray();
+        private const string subscriptionKey = "d606cf63094f42df8698487d3c968a55";
+        public string localImagePath = "";
 
         // Specify the features to return
         private readonly List<VisualFeatureTypes> features =
@@ -32,6 +36,7 @@ namespace Hackathon
 
         private void makingRequest()
         {
+            localImagePath = @"..\\..\\Images\" + imagesArray[loadedImage];
             ComputerVisionClient computerVision = new ComputerVisionClient(
                new ApiKeyServiceClientCredentials(subscriptionKey),
                new System.Net.Http.DelegatingHandler[] { });
@@ -40,9 +45,10 @@ namespace Hackathon
             Console.WriteLine("Images being analyzed ...");
             var t2 = AnalyzeLocalAsync(computerVision, localImagePath);
 
-            Task.WhenAll(t2).Wait(5000);
+            //Task.WhenAll(t2).Wait(5000);
             Console.WriteLine("Press ENTER to exit");
-            Console.ReadLine();
+            Database.run();
+            //Console.ReadLine();
         }
 
         // Analyze a local image
@@ -67,11 +73,47 @@ namespace Hackathon
         // Display the most relevant caption for the image
         private void DisplayResults(ImageAnalysis analysis, string imageUri)
         {
-            image.Load(localImagePath);
-            imageLabel.Text = analysis.Description.Captions[0].Text + "\n";
+            image.Load(imageUri);
+            tagsTB.Clear();
+            imageLabel.Text = "Description: " + analysis.Description.Captions[0].Text;
+            for (int i = 0; i < analysis.Description.Tags.Count; i++)
+            {
+                tagsTB.AppendText(analysis.Description.Tags[i] + "\n");
+            }
+            /*+
+            
+                "Tags :" + analysis.Tags.ToString();*/
+            //label1.Text = analysis.Tags.Count + "";
+            //Console.WriteLine("TYPE " + analysis.ImageType.ToString());
+            //label1.Text = "test";
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            makingRequest();
+        }
+        private void nextButton_Click(object sender, EventArgs e)
+        {
+            if (loadedImage != (imagesArray.Length - 1))
+            {
+                loadedImage++;
+            }
+            else
+            {
+                loadedImage = 0;
+            }
+            makingRequest();
+        }
+
+        private void previousButton_Click(object sender, EventArgs e)
+        {
+            if (loadedImage != 0)
+            {
+                loadedImage--;
+            }
+            else
+            {
+                loadedImage = imagesArray.Length - 1;
+            }
             makingRequest();
         }
     }
