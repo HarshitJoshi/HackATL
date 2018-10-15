@@ -1,5 +1,5 @@
 # **Microsoft HackATL 2018**
-## *__The Challenge__*
+### *__The Challenge__*
 
 <span style="font-size:1.5em;">*Your team’s mission today is to learn more about AI capabilities through hands on practice by completing challenges in two key areas: Cognitive Services and Bots.*</span>
 
