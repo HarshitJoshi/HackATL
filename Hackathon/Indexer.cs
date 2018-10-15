@@ -1,4 +1,4 @@
-private static async Task createIndexers() {
+/*private static async Task createIndexers() {
             IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appSettings.json");
             IConfigurationRoot configuration = builder.Build();
 
@@ -60,4 +60,4 @@ private static async Task createIndexers() {
             {
                 Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
             }
-        }
+        }*/
