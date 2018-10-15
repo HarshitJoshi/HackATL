@@ -1,6 +1,5 @@
-<span style="color:SteelBlue; font-family:Roboto; font-size:3em;">Microsoft HackATL 2018</span>
-****
-<span style="color:LightSlateGray; font-family:Roboto; font-size:2.5em;">*The Challenge*</span>
+# **Microsoft HackATL 2018**
+## *__The Challenge__*
 
 <span style="font-size:1.5em;">*Your team’s mission today is to learn more about AI capabilities through hands on practice by completing challenges in two key areas: Cognitive Services and Bots.*</span>
 
